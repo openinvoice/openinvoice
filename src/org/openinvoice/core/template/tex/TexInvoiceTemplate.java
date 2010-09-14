@@ -1,6 +1,5 @@
 package org.openinvoice.core.template.tex;
 
-
 import org.openinvoice.core.template.InvoiceTemplate;
 import org.openinvoice.util.OutputFormat;
 
@@ -17,30 +16,16 @@ import java.util.Map;
  */
 public class TexInvoiceTemplate extends InvoiceTemplate {
 
-    private Map<String, String> escapeMap = new HashMap<String, String>();
-
     public TexInvoiceTemplate() throws IOException {
         super();
-        escapeMap.put("%", "\\\\%");
-        escapeMap.put("€", "\\eurologo");
-        escapeMap.put("$", "\\$");
-        escapeMap.put("£", "\\\\pounds");
+        getEscapeMap().put("%", "\\\\%");
+        getEscapeMap().put("€", "\\eurologo");
+        getEscapeMap().put("$", "\\$");
+        getEscapeMap().put("£", "\\\\pounds");
     }
 
     @Override
     public OutputFormat getFinalViewableFormat() {
         return OutputFormat.PDF;
-    }
-
-    public String escape(String template) {
-        Iterator keys = escapeMap.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            if (template.indexOf(key) >= 0) {
-                String value = escapeMap.get(key);
-                template = template.replaceAll(key, value);
-            }
-        }
-        return template;
     }
 }

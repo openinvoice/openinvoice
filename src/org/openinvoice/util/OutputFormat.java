@@ -8,19 +8,23 @@ package org.openinvoice.util;
  */
 public enum OutputFormat {
 
-    TEX, PDF, XML, UNKNOWN;
+    TEX, PDF, XML, HTML, UNKNOWN;
 
-    private String fileSuffix = "";
+    private String fileExtension = "";
     private String format = "";
 
     private OutputFormat() {
         this.format = name();
-        this.fileSuffix = "." + format.toLowerCase();
+        this.fileExtension = format.toLowerCase();
 
     }
 
     public String getFileSuffix() {
-        return fileSuffix.toLowerCase();
+        return "." + fileExtension;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
     }
 
     public String getApplication() {

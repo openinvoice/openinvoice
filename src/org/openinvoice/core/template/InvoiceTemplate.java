@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Author: jhe
@@ -18,6 +21,16 @@ import java.io.InputStream;
 public class InvoiceTemplate {
 
     private String templateText;
+
+    public Map<String, String> getEscapeMap() {
+        return escapeMap;
+    }
+
+    public void setEscapeMap(Map<String, String> escapeMap) {
+        this.escapeMap = escapeMap;
+    }
+
+    private Map<String, String> escapeMap = new HashMap<String, String>();
 
     public InvoiceTemplate(String templateText) {
         this.templateText = templateText;
@@ -42,8 +55,16 @@ public class InvoiceTemplate {
         this.templateText = templateText;
     }
 
-    public String escape(String s) {
-        return s;
+    public String escape(String template) {
+        Iterator keys = escapeMap.keySet().iterator();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
+            if (template.indexOf(key) >= 0) {
+                String value = escapeMap.get(key);
+                template = template.replaceAll(key, value);
+            }
+        }
+        return template;
     }
 
     private String removeLeftOverKeys(String template) {

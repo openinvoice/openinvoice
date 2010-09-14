@@ -1,0 +1,103 @@
+% Invoice template
+% Author: Javad K. Heshmati
+% $Date:$
+% ---
+\documentclass[%
+  invoice-stylesheet,
+  DIV=9,
+  fontsize=12pt,
+  pagesize,
+  backaddress=false,
+  twoside=true]{scrlttr2}
+
+\newcommand{\datename}{{\color{darkbrown}\textsc{issueDate.name:}\/}}
+\newcommand{\customername}{{\color{darkbrown}\textsc{orderId.name:}\/}}
+\newcommand{\invoicename}{{\color{darkbrown}\textsc{id.name}\/}}
+
+\setkomavar{fromBankName}{payeeFinancialInstitutionName.value}
+\setkomavar{fromBankBic}{payeeFinancialInstitutionID.value}
+\setkomavar{fromBankAccNo}{payeeFinancialAccountID.value}
+\setkomavar{fromBankIban}{payeeFinancialAccountID.value}
+
+\newcommand{\mkFirstHeadTable}{%
+   \begin{tabular}{l l l}
+      \multirow{4}{*}{\includegraphics{supplierParty.partyLogoReference.value}}& supplierParty.partyName.value, supplierParty.partyAddressStreetName.value supplierParty.partyAddressFloor.value, supplierParty.partyAddressBuildName.value, supplierParty.partyAddressPostBox.value &
+      supplierParty.partyWebUrl.name supplierParty.partyWebUrl.value 
+        \\%
+        & supplierParty.partyAddressCityName.value supplierParty.partyAddressPostalZone.value &
+        supplierParty.partyContactEmail.name supplierParty.partyContactEmail.value
+        \\%
+        & supplierParty.partyAddressCountryName.value  &
+        supplierParty.partyContactTelephone.name supplierParty.partyContactTelephone.value %
+        \\%
+        & supplierParty.partyTaxSchemeCode.value: supplierParty.partyTaxSchemeCompanyId.value & 
+        supplierParty.partyContactFax.name supplierParty.partyContactFax.value\\
+    \end{tabular}%
+}%
+
+\setkomavar{letterHead}{\mkFirstHeadTable}
+
+\newcommand{\labelBank}{payeeFinancialInstitutionName.name}
+\newcommand{\labelBankIban}{payeeFinancialAccountID.name}
+\newcommand{\labelBankAcc}{payeeFinancialAccountID.name}
+\newcommand{\labelBankBic}{payeeFinancialInstitutionID.name}
+
+\begin{document}
+\begin{letter}{%
+    \vspace{2cm}
+           {\color{darkbrown}\textsc{customerParty.partyName.name:}\/}\\
+\smallskip%
+\begin{tabular}{l l}
+  customerParty.partyName.value, customerParty.partyAddressStreetName.value customerParty.partyAddressFloor.value, customerParty.partyAddressBuildName.value, customerParty.partyAddressPostBox.value & 
+  customerParty.partyWebUrl.name: customerParty.partyWebUrl.value
+  \\%
+  customerParty.partyAddressCityName.value customerParty.partyAddressPostalZone.value &
+  customerParty.partyContactEmail.value
+  \\%
+  customerParty.partyAddressCountryName.value  &
+  customerParty.partyContactTelephone.value %
+  \\%
+  &% VAT
+  customerParty.partyContactFax.name  customerParty.partyContactFax.value%
+\end{tabular}%
+  }%
+  
+  
+\setkomavar{invoice}{\invoiceNumber{id.value}}
+\setkomavar{date}{\invoiceDate{issueDate.value}}
+\setkomavar{customer}{orderId.value}
+
+\opening{}{}
+
+% --- Invoice Entries ---
+\begin{center}
+\begin{supertabular*}{\textwidth}{%
+@{\extracolsep{\fill}}>\smaller c >\smaller c >\smaller c > \smaller r >\smaller r >\smaller r >\smaller r}%
+\toprule%
+\textsc{itemDescription.name}&
+\textsc{itemQuantityUnitCode.name}&
+\textsc{itemQuantity.name}&
+\textsc{itemUnitPrice.name}&%
+\textsc{itemLineExtensionAmount.name}&%
+\textsc{itemTaxTotalAmount.name}&
+\textsc{taxPercentage.name}
+\\[1mm]%
+& & & (currencyCode.value) & (currencySymbol.value) & (currencyCode.value) & \% \\[2mm]
+\toprule%
+invoiceLineItem.start itemDescription.value & itemQuantityUnitCode.value & itemQuantity.value & itemUnitPrice.value & itemLineExtensionAmount.value & itemTaxTotalAmount.value  & taxPercentage.value invoiceLineItem.end\\
+\midrule
+\multicolumn{5}{r}{%
+  \begin{tabular}{r r}% 
+    \\\textsc{legalMonetaryLineExtensionAmount.name:} & \invoiceSubtotal{legalMonetaryLineExtensionAmount.value}\\%
+      \textsc{legalMonetaryTaxTotalAmount.name:} &\invoiceVat{legalMonetaryTaxTotalAmount.value}\\%
+        \cline{2-2}\\[-4.5mm]\cline{2-2}\\[-4mm]%
+    \textsc{legalMonetaryTaxInclusiveAmount.name:}& {\bf~\invoiceTotal{legalMonetaryTaxInclusiveAmount.value}}%
+  \end{tabular}%
+}\\[2mm]%
+\bottomrule%
+\end{supertabular*}
+\bigskip
+\input{invoice-terms}
+\end{center}
+\end{letter}%
+\end{document}

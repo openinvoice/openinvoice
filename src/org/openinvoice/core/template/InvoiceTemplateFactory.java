@@ -2,6 +2,7 @@ package org.openinvoice.core.template;
 
 import org.apache.log4j.Logger;
 import org.openinvoice.core.io.InvoiceWriterFactory;
+import org.openinvoice.core.template.html.HTMLInvoiceTemplate;
 import org.openinvoice.core.template.tex.TexInvoiceTemplate;
 import org.openinvoice.util.OutputFormat;
 import org.openinvoice.util.ResourceManager;
@@ -33,6 +34,14 @@ public class InvoiceTemplateFactory {
                 case TEX:
                     try {
                         invoiceTemplate = new TexInvoiceTemplate();
+                    } catch (IOException e) {
+                        logger.fatal(e.getMessage());
+                        throw new IllegalArgumentException(e.getMessage());
+                    }
+                    break;
+                case HTML:
+                    try {
+                        invoiceTemplate = new HTMLInvoiceTemplate();
                     } catch (IOException e) {
                         logger.fatal(e.getMessage());
                         throw new IllegalArgumentException(e.getMessage());
