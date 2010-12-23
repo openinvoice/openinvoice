@@ -10,21 +10,17 @@ public enum OutputFormat {
 
     TEX, PDF, XML, HTML, UNKNOWN;
 
-    private String fileExtension = "";
+    private String fileSuffix = "";
     private String format = "";
 
     private OutputFormat() {
         this.format = name();
-        this.fileExtension = format.toLowerCase();
+        this.fileSuffix = format.toLowerCase();
 
     }
 
     public String getFileSuffix() {
-        return "." + fileExtension;
-    }
-
-    public String getFileExtension() {
-        return fileExtension;
+        return "." + fileSuffix;
     }
 
     public String getApplication() {

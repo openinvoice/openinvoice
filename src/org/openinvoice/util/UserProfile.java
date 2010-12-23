@@ -50,8 +50,7 @@ public class UserProfile {
 
 
     public static File getInvoiceTemplateDir() {
-        return FileManager.getDir(properties.getProperty("invoice.template.dir")
-                + "/" + getInvoiceOutputFormat().getFileExtension());
+        return FileManager.getDir(properties.getProperty("invoice.template.dir"));
     }
 
     public static File getInvoiceTemplateFile() throws IOException {
