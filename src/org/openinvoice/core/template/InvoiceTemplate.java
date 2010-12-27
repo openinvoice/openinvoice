@@ -21,7 +21,7 @@ import java.util.Map;
 public class InvoiceTemplate {
 
   private String templateText;
-  private Map<String, String> escapeMap = new HashMap<String, String>();
+  private Map<String, String> escapeMap;
 
 
   protected Map<String, String> getEscapeMap() {
@@ -30,6 +30,7 @@ public class InvoiceTemplate {
 
   public InvoiceTemplate(String templateText) {
     this.templateText = templateText;
+    this.escapeMap = new HashMap<String, String>();
   }
 
   public InvoiceTemplate() throws IOException {
