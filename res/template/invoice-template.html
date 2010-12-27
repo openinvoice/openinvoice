@@ -1,14 +1,140 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en" lang="en">
 <head>
   <title>id.name: id.value</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body id="id.value">
-<div id="header">
-<h1>Invoice</h1>
+  <div id="header">
+    <h1>id.name: id.value</h1>
+
+<div id="supplier">
+<div class="vcard">
+  <a class="fn org url" 
+     href="supplierParty.partyWebUrl.value">supplierParty.partyName.value</a>
+  <div class="adr">
+    <span class="floor">supplierParty.partyAddressFloor.value</span>
+    <span class="building-name">supplierParty.partyAddressBuildName.value</span>
+    <span class="post-office-box">supplierParty.partyAddressPostBox.value</span>
+    <div class="street-address">supplierParty.partyAddressStreetName.value</div>
+    <div class="locality">supplierParty.partyAddressPostalZone.value</div>
+    <div class="region">supplierParty.partyAddressRegion.value</div>
+    <span class="city-name">supplierParty.partyAddressCityName.value</span>
+    <div class="country-name">supplierParty.partyAddressCountryName.value</div>
+  </div>
+  <div class="tel">
+    <span class="type">Work</span>: supplierParty.partyContactTelephone.value
+  </div>
+  <div class="tel">
+    <span class="type">Fax</span>: supplierParty.partyContactFax.value
+  </div>
+  <div class="email">
+    <span class="value">supplierParty.partyContactEmail.value</span>
+  </div>
+  <div class="url">
+    <span class="value">supplierParty.partyWebUrl.value</span>
+  </div>
+</div>    
 </div>
+</div>
+
+<div id="customer">
+<div class="vcard">
+  <a class="fn org url" 
+     href="customerParty.partyWebUrl.value">customerParty.partyName.value</a>
+  <div class="adr">
+    <span class="floor">customerParty.partyAddressFloor.value</span>
+    <span class="building-name">customerParty.partyAddressBuildName.value</span>
+    <span class="post-office-box">customerParty.partyAddressPostBox.value</span>
+    <div class="street-address">customerParty.partyAddressStreetName.value</div>
+    <div class="locality">customerParty.partyAddressPostalZone.value</div>
+    <div class="region">customerParty.partyAddressRegion.value</div>
+    <span class="city-name">customerParty.partyAddressCityName.value</span>
+    <div class="country-name">customerParty.partyAddressCountryName.value</div>
+  </div>
+  <div class="tel">
+    <span class="type">Work</span>: customerParty.partyContactTelephone.value
+  </div>
+  <div class="tel">
+    <span class="type">Fax</span>: customerParty.partyContactFax.value
+  </div>
+  <div class="email">
+    <span class="value">customerParty.partyContactEmail.value</span>
+  </div>
+  <div class="url">
+    <span class="value">customerParty.partyWebUrl.value</span>
+  </div>
+</div>    
+</div>
+
+<div class="invoice-items">
+<table>
+  <thead>
+    <tr>
+      <th id="description">itemDescription.name</th>
+      <th id="unit-code">itemQuantityUnitCode.name</th>
+      <th id="quantity">itemQuantity.name</th>
+      <th id="unit-price">
+	itemUnitPrice.name 
+	<span class="currency-code">currencyCode.value</span>
+      </th>
+      <th id="price">
+	itemLineExtensionAmount.name
+	<span class="currency-code">currencyCode.value</span>
+      </th>
+      <th id="tax-amount">
+	itemTaxTotalAmount.name
+	<span class="currency-code">currencyCode.value</span>
+      </th>
+      <th id="tax-ratio">
+	taxPercentage.name
+	<span class="tax-ratio-symbol">%</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--invoiceLineItem.start-->
+    <tr>
+      <td headers="description">itemDescription.value</td>
+      <td headers="unit-code">itemQuantityUnitCode.value</td>
+      <td headers="quantity">itemQuantity.value</td>
+      <td headers="unit-price">itemUnitPrice.value</td>
+      <td headers="price">itemLineExtensionAmount.value</td>
+      <td headers="tax-amount">itemTaxTotalAmount.value></td>
+      <td headers="tax-ratio">taxPercentage.value</td>
+    </tr>
+    <!--invoiceLineItem.end-->
+  </tbody>
+</table>
+<dl>
+  <dt class="subtotal">legalMonetaryLineExtensionAmount.name</dt>
+  <dd>
+    <span class="value">legalMonetaryLineExtensionAmount.value</span>
+  </dd>
+  <dt class="tax-amount">legalMonetaryTaxTotalAmount.name</dt>
+  <dd>
+    <span class="value">legalMonetaryTaxTotalAmount.value</span>
+  </dd>
+  <dt class="tax-amount">legalMonetaryTaxInclusiveAmount.name</dt>
+  <dd>
+    <span class="value">legalMonetaryTaxInclusiveAmount.value</span>
+  </dd>
+</dl>
+</div>
+
+<div class="invoice-terms">
+  <h3>Sales and Payment Terms</h3>
+  <ul>
+    <li>Delivery: Ex Works - no transportation costs are included.</li>
+    <li>Payment Method: T/T Bank Transfer.</li>
+    <li>Lead Time: 20 Business days after payment confirmation.</li>
+    <li>P.I. is valid for 20 Business days after its issue date.</li>
+    <li>Plain Source reserves the right to place a service charge on past due 
+    accounts at the highest rate permitted by Belgian law.</li>
+  </ul>
+</div>
+
 </body>
 </html>
