@@ -26,10 +26,6 @@ public class InvoiceTemplate {
         return escapeMap;
     }
 
-    public void setEscapeMap(Map<String, String> escapeMap) {
-        this.escapeMap = escapeMap;
-    }
-
     private Map<String, String> escapeMap = new HashMap<String, String>();
 
     public InvoiceTemplate(String templateText) {
