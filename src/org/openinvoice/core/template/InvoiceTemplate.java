@@ -21,12 +21,11 @@ import java.util.Map;
 public class InvoiceTemplate {
 
   private String templateText;
+  private Map<String, String> escapeMap = new HashMap<String, String>();
 
   public Map<String, String> getEscapeMap() {
     return escapeMap;
   }
-
-  private Map<String, String> escapeMap = new HashMap<String, String>();
 
   public InvoiceTemplate(String templateText) {
     this.templateText = templateText;
