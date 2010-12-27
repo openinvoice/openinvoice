@@ -23,7 +23,8 @@ public class InvoiceTemplate {
   private String templateText;
   private Map<String, String> escapeMap = new HashMap<String, String>();
 
-  public Map<String, String> getEscapeMap() {
+
+  protected Map<String, String> getEscapeMap() {
     return escapeMap;
   }
 
