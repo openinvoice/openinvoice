@@ -12,16 +12,16 @@ import java.io.IOException;
 
 public class HTMLInvoiceTemplate extends InvoiceTemplate {
 
-    public HTMLInvoiceTemplate() throws IOException {
-        super();
-        getEscapeMap().put("&", "&amp;");
-        getEscapeMap().put("<", "&lt;");
-        getEscapeMap().put(">", "&gt;");
-        getEscapeMap().put("\"", "&quot;");
-    }
+  public HTMLInvoiceTemplate() throws IOException {
+    super();
+    getEscapeMap().put("&", "&amp;");
+    getEscapeMap().put("<", "&lt;");
+    getEscapeMap().put(">", "&gt;");
+    getEscapeMap().put("\"", "&quot;");
+  }
 
-    @Override
-    public OutputFormat getFinalViewableFormat() {
-        return OutputFormat.HTML;
-    }
+  @Override
+  public OutputFormat getFinalViewableFormat() {
+    return OutputFormat.HTML;
+  }
 }
