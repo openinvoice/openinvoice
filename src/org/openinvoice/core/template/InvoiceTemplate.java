@@ -1,6 +1,7 @@
 package org.openinvoice.core.template;
 
 import org.openinvoice.core.field.InvoiceFieldKey;
+import org.openinvoice.util.OrderedPair;
 import org.openinvoice.util.OutputFormat;
 import org.openinvoice.util.UserProfile;
 
@@ -23,14 +24,14 @@ public class InvoiceTemplate {
   private String templateText;
   private Map<String, String> escapeMap;
 
+  private static final OrderedPair<String, String> ITEM_DELIMITER_WRAPPER;
 
-  protected Map<String, String> getEscapeMap() {
-    return escapeMap;
+  static {
+    ITEM_DELIMITER_WRAPPER = new OrderedPair("", "");
   }
 
   public InvoiceTemplate(String templateText) {
     this.templateText = templateText;
-    this.escapeMap = new HashMap<String, String>();
   }
 
   public InvoiceTemplate() throws IOException {
@@ -38,6 +39,7 @@ public class InvoiceTemplate {
     if (f != null) {
       this.templateText = new TemplateFile(f).toString();
     }
+    this.escapeMap = new HashMap<String, String>();
   }
 
   public String getTemplateText() {
@@ -81,6 +83,14 @@ public class InvoiceTemplate {
   @Override
   public String toString() {
     return templateText;
+  }
+
+  public Map<String, String> getEscapeMap() {
+    return escapeMap;
+  }
+
+  public OrderedPair<String, String> getItemDelimiterWrapper() {
+    return ITEM_DELIMITER_WRAPPER;
   }
 
   /**
