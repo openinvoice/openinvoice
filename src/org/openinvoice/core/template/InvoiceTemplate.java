@@ -1,7 +1,6 @@
 package org.openinvoice.core.template;
 
 import org.openinvoice.core.field.InvoiceFieldKey;
-import org.openinvoice.util.OrderedPair;
 import org.openinvoice.util.OutputFormat;
 import org.openinvoice.util.UserProfile;
 
@@ -23,12 +22,6 @@ public class InvoiceTemplate {
 
   private String templateText;
   private Map<String, String> escapeMap;
-
-  private static final OrderedPair<String, String> ITEM_DELIMITER_WRAPPER;
-
-  static {
-    ITEM_DELIMITER_WRAPPER = new OrderedPair("", "");
-  }
 
   public InvoiceTemplate(String templateText) {
     this.templateText = templateText;
@@ -89,8 +82,12 @@ public class InvoiceTemplate {
     return escapeMap;
   }
 
-  public OrderedPair<String, String> getItemDelimiterWrapper() {
-    return ITEM_DELIMITER_WRAPPER;
+  public String getStartCommentTag() {
+    return "";
+  }
+
+  public String getEndCommentTag() {
+    return "";
   }
 
   /**

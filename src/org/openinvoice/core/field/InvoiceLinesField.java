@@ -40,16 +40,14 @@ public class InvoiceLinesField implements Replaceable {
 
     public InvoiceTemplate replace(InvoiceTemplate invoiceTemplate) {
 
-        String invoiceLineItemDelimiterWrapperStart = invoiceTemplate.getItemDelimiterWrapper().getFirst();
-        String invoiceLineItemDelimiterWrapperEnd = invoiceTemplate.getItemDelimiterWrapper().getSecond();
+        String commentStartTag = invoiceTemplate.getStartCommentTag();
+        String commentEndTag = invoiceTemplate.getEndCommentTag();
 
-        String invoiceLineItemStartTag = invoiceLineItemDelimiterWrapperStart
-            + InvoiceFieldKey.invoiceLineItem.startTag()
-            + invoiceLineItemDelimiterWrapperEnd;
+        String invoiceLineItemStartTag = commentStartTag
+            + InvoiceFieldKey.invoiceLineItem.startTag() + commentEndTag;
 
-        String invoiceLineItemEndTag = invoiceLineItemDelimiterWrapperStart
-            + InvoiceFieldKey.invoiceLineItem.endTag()
-            + invoiceLineItemDelimiterWrapperEnd;
+        String invoiceLineItemEndTag = commentStartTag
+            + InvoiceFieldKey.invoiceLineItem.endTag() + commentEndTag;
 
         String template = replaceInvoiceLinesItemHeader(invoiceTemplate).toString().trim();
 

@@ -1,7 +1,6 @@
 package org.openinvoice.core.template.html;
 
 import org.openinvoice.core.template.InvoiceTemplate;
-import org.openinvoice.util.OrderedPair;
 import org.openinvoice.util.OutputFormat;
 
 import java.io.IOException;
@@ -13,13 +12,8 @@ import java.io.IOException;
 
 public class HTMLInvoiceTemplate extends InvoiceTemplate {
 
-  private static final String START_COMMENT_BLOCK = "<!--";
-  private static final String END_COMMENT_BLOCK = "-->";
-  private static final OrderedPair<String, String> ITEM_DELIMITER_WRAPPER;
-
-  static {
-    ITEM_DELIMITER_WRAPPER = new OrderedPair(START_COMMENT_BLOCK, END_COMMENT_BLOCK);
-  }
+  private static final String START_COMMENT_TAG = "<!--";
+  private static final String END_COMMENT_TAG = "-->";
 
   public HTMLInvoiceTemplate() throws IOException {
     super();
@@ -29,9 +23,12 @@ public class HTMLInvoiceTemplate extends InvoiceTemplate {
     getEscapeMap().put("\"", "&quot;");
   }
 
-  @Override
-  public OrderedPair<String, String> getItemDelimiterWrapper() {
-    return ITEM_DELIMITER_WRAPPER;
+  public String getStartCommentTag() {
+    return START_COMMENT_TAG;
+  }
+
+  public String getEndCommentTag() {
+    return END_COMMENT_TAG;
   }
 
   @Override
